@@ -6,7 +6,8 @@ import Sub_Tabs from '../../components/HomeDashboardComp/Sub_Tabs'
 
 const home_dashboard = () => {
   return (
-    <div className="flex">
+    <>
+    <div className="hidden md:flex ">
       <Sidebar />
       <main className="flex-1 overflow-y-auto ">
         <Header location = 'Home '/>
@@ -14,6 +15,11 @@ const home_dashboard = () => {
         <Sub_Tabs />
       </main>
     </div>
+    <div className='flex flex-col justify-center items-center min-h-screen sm:hidden'> 
+      <p>Not available on mobile screens</p>
+      <p>Kindly view on a tablet or laptop</p>
+    </div>
+    </>
   )
 }
 
