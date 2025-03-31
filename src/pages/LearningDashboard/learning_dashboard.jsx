@@ -2,6 +2,7 @@ import React from "react";
 import Sidebar from "../../components/Dashboard/Sidebar";
 import Header from "../../components/Dashboard/Header";
 import Welcome_Section from "../../components/HomeDashboardComp/Welcome_Section";
+import Learning_Dashboard_Comp from "../../components/Learning Dashboard/Learning_Dashboard_Comp";
 
 const learning_dashboard = () => {
   return (
@@ -11,6 +12,7 @@ const learning_dashboard = () => {
         <main className="flex-1 overflow-y-auto ">
           <Header location="Learning " />
           <Welcome_Section />
+          <Learning_Dashboard_Comp />
         </main>
       </div>
 

@@ -3,8 +3,8 @@ import { Bell, Search, ChevronDown } from 'lucide-react';
 
 const Header = ({location}) => {
   return (
-    <header className=" h-16 px-4 flex items-center justify-between  bg-gray-100">
-    <div className='flex-1 text-xl pl-4'>
+    <header className=" h-16 px-5 flex items-center justify-between  bg-gray-100">
+    <div className='flex-1 text-xl '>
         <h2>{location}Dashboard</h2>
     </div>
       {/* <div className="flex-2 flex items-center">
@@ -27,9 +27,9 @@ const Header = ({location}) => {
           <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"></span>
         </button>
 
-        <div className="flex items-center space-x-3 pr-4">
+        <div className="flex items-center space-x-3 ">
           <img
-            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+            src="https://img.freepik.com/premium-vector/avatar-profile-icon-flat-style-male-user-profile-vector-illustration-isolated-background-man-profile-sign-business-concept_157943-38764.jpg?w=740"
             alt="Profile"
             className="w-8 h-8 rounded-full object-cover"
           />

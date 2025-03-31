@@ -2,7 +2,7 @@ import React from 'react'
 
 const Sub_Tabs = () => {
   return (
-    <div className='grid md:grid-cols-2 lg:grid-cols-4 mx-8 gap-3'>
+    <div className='grid md:grid-cols-2 lg:grid-cols-4 mx-5 gap-3'>
       <div className='bg-white shadow-sm rounded-sm px-4 py-10'>
         <p className='text-md '>Total Users</p>
       </div>
