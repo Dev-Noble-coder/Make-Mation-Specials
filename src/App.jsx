@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 import Login from "./auth/Login";
 import CreateAccount from "./auth/CreateAccount";
 import Home_Dashboard from "./pages/HomeDashboard/home_dashboard";
@@ -12,6 +13,7 @@ import Test_Dashboard from "./pages/TestDashboard/test_dashboard";
 function App() {
   return (
     <>
+       <Toaster position="top-center" reverseOrder={false} />
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />

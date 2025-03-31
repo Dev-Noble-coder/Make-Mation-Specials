@@ -3,7 +3,7 @@ import { Bell, Search, ChevronDown } from 'lucide-react';
 
 const Header = ({location}) => {
   return (
-    <header className=" h-16 px-5 flex items-center justify-between  bg-gray-100">
+    <header className=" h-16 px-5 flex items-center justify-between  bg-gray-100 ">
     <div className='flex-1 text-xl '>
         <h2>{location}Dashboard</h2>
     </div>

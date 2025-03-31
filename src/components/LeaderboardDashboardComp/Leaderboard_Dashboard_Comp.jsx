@@ -36,13 +36,13 @@ function Leaderboard_Dashboard_Comp() {
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
               <tr>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th scope="col" className="px-6 py-5 text-left text-xs  font-semibold text-gray-500 uppercase tracking-wider">
                   Position
                 </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th scope="col" className="px-6 py-5 text-left text-xs  font-semibold text-gray-500 uppercase tracking-wider">
                   Player
                 </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th scope="col" className="px-6 py-5 text-left text-xs  font-semibold text-gray-500 uppercase tracking-wider">
                   Score
                 </th>
               </tr>
