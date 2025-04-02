@@ -2,6 +2,7 @@ import React from "react";
 import Sidebar from "../../components/Dashboard/Sidebar";
 import Header from "../../components/Dashboard/Header";
 import Welcome_Section from "../../components/HomeDashboardComp/Welcome_Section";
+import Profile_Dashboard_Comp from "../../components/ProfileDashboardComp/Profile_Dashboard_Comp";
 
 const profile_dashboard = () => {
   return (
@@ -11,6 +12,7 @@ const profile_dashboard = () => {
         <main className="flex-1 overflow-y-auto ">
           <Header location="Profile " />
           <Welcome_Section />
+          <Profile_Dashboard_Comp />
         </main>
       </div>
 

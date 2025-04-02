@@ -22,7 +22,7 @@ function Sidebar() {
           <nav className="flex flex-col flex-grow pt-5">
             {/* General Section */}
             <div className="mb-3">
-              <p className="px-8 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
+              <p className="px-8 text-xs font-semibold text-[#CD950E] uppercase tracking-wider mb-2">
                 GENERAL
               </p>
               <MenuItem
@@ -45,7 +45,7 @@ function Sidebar() {
 
             {/* Collaboration Section */}
             <div className="my-5">
-              <p className="px-8 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
+              <p className="px-8 text-xs font-semibold text-[#CD950E] uppercase tracking-wider mb-2">
                 DEVELOPMENT
               </p>
               <MenuItem
@@ -68,7 +68,7 @@ function Sidebar() {
 
             {/* Rankings Section */}
             <div className="mt-5">
-              <p className="px-8 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
+              <p className="px-8 text-xs font-semibold text-[#CD950E] uppercase tracking-wider mb-2">
                 TOP RANKINGS
               </p>
               <MenuItem
@@ -106,11 +106,12 @@ function MenuItem({ icon: Icon, name, to, active, onClick }) {
       className={`flex items-center px-7 py-4 text-sm cursor-pointer transition-all duration-200 relative
         ${
           active
-            ? "bg-gray-800 text-white before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1 before:bg-white"
+            ? "bg-gray-800 text-white before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1 before:bg-[#CD950E]"
             : "text-gray-400 hover:bg-gray-800 hover:text-gray-200"
         }`}
     >
-      <Icon className="h-5 w-5 mr-3" />
+      <Icon className={`h-5 w-5 mr-3 ${active ? 'text-[#CD950E]' : ''
+      }`} />
       <span>{name}</span>
     </Link>
   );
