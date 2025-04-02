@@ -16,9 +16,9 @@ import {
 
 function Profile_Dashboard_Comp() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className=" bg-gray-50">
 
-      <main className="max-w-7xl mx-auto px-4 py-8">
+      <main className=" mx-auto px-4 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
           {/* Left Column - Profile Card */}
           <div className="lg:col-span-1">
@@ -72,7 +72,7 @@ function Profile_Dashboard_Comp() {
           {/* Right Column - Content */}
           <div className="lg:col-span-2 ">
             {/* About Section */}
-            <div className="bg-white rounded-lg shadow p-6 mb-3">
+            <div className="bg-white rounded-lg shadow p-6 mb-4">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-semibold text-[#CD950E]">About</h3>
                 <button className="text-[#CD950E] hover:text-[#B78100]">
@@ -88,7 +88,7 @@ function Profile_Dashboard_Comp() {
        
 
             {/* Skills */}
-            <div className="bg-white rounded-lg shadow p-6 mb-3">
+            <div className="bg-white rounded-lg shadow p-6 mb-4">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-semibold text-[#CD950E]">Skills</h3>
                 <button className="text-[#CD950E] hover:text-[#B78100]">
