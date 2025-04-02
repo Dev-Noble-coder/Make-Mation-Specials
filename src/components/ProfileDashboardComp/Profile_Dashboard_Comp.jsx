@@ -70,7 +70,7 @@ function Profile_Dashboard_Comp() {
           </div>
 
           {/* Right Column - Content */}
-          <div className="lg:col-span-2 ">
+          <div className="lg:col-span-2 grid grid-cols-1 ">
             {/* About Section */}
             <div className="bg-white rounded-lg shadow p-6 mb-4">
               <div className="flex items-center justify-between mb-4">
