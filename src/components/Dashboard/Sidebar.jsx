@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Home, Users, MessageSquare, FileText } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import makemationLogo from '../../assets/img/makemationLogo.png'
+
 
 function Sidebar() {
   const location = useLocation();
@@ -12,7 +14,7 @@ function Sidebar() {
       <div className="w-64 bg-[#1a1a1a] text-gray-300 flex flex-col">
         {/* Logo */}
         <div className="py-5 pl-8">
-          <h1 className="text-4xl font-semibold">MMS</h1>
+         <img src={makemationLogo} alt="" />
         </div>
 
         <hr className="mx-5 opacity-15" />
