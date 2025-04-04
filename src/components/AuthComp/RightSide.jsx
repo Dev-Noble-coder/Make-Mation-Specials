@@ -12,6 +12,7 @@ import {
   FileText, 
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import makemationLogo from '../../assets/img/makemationLogo.png'
 
 const RightSide = () => {
   const [step, setStep] = useState(1);
@@ -51,7 +52,10 @@ const RightSide = () => {
   };
 
   return (
-    <div className="flex-1 flex items-center justify-center p-8">
+    <div className="flex-1 flex items-center justify-center p-8 relative">
+      <div className="absolute top-5 right-5">
+        <img src={makemationLogo} alt="" />
+      </div>
       <div className="max-w-md w-full">
         <p
           className="text-blue-600 text-[12px] mb-5 font-semibold flex justify-start items-center gap-1 cursor-pointer"

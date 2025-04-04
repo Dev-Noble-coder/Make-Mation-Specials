@@ -1,52 +1,53 @@
-import React from "react";
-
+import React, { useMemo } from "react";
 import {
-  Eye,
-  EyeOff,
-  ChevronRight,
-  Lock,
-  Mail,
-  User,
-  ArrowLeftIcon,
-  Calendar,
-  Hash,
-  FileText,
   Sparkles,
   Film,
   Star,
 } from "lucide-react";
- import makemationImg from '../../assets/img/make-mationImg.png'
+import makemationImg from '../../assets/img/make-mationImg.png';
+
+// Pre-generate star positions
+const STAR_COUNT = 20;
+const starPositions = Array.from({ length: STAR_COUNT }, () => ({
+  left: `${Math.random() * 100}%`,
+  top: `${Math.random() * 100}%`,
+  duration: 5 + Math.random() * 5,
+  delay: Math.random() * 5
+}));
 
 const LeftSide = () => {
-  function SparkleEffect() {
-    return (
+  // Memoized SparkleEffect component
+  const SparkleEffect = () => {
+    const stars = useMemo(() => (
       <div className="absolute inset-0 pointer-events-none">
-        {[...Array(20)].map((_, i) => (
+        {starPositions.map((position, i) => (
           <div
             key={i}
             className="absolute animate-float"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animation: `float ${5 + Math.random() * 5}s linear infinite`,
-              animationDelay: `${Math.random() * 5}s`,
+              left: position.left,
+              top: position.top,
+              animation: `float ${position.duration}s linear infinite`,
+              animationDelay: `${position.delay}s`
             }}
           >
             <Star className="w-4 h-4 text-yellow-200 animate-pulse" />
           </div>
         ))}
       </div>
-    );
-  }
+    ), []); // Empty dependency array means this will only be created once
+
+    return stars;
+  };
 
   return (
-    <div className="flex-1  relative overflow-hidden">
+    <div className="flex-1 relative overflow-hidden">
       <img
         src={makemationImg}
         alt="Cinematic background"
         className="absolute inset-0 w-full h-full object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-purple-900/95 to-indigo-900/95" />
+      <div className="absolute inset-0 bg-gradient-to-r from-purple-900/90 to-indigo-900/90" />
       <SparkleEffect />
       <div className="absolute inset-0 flex items-center justify-center p-12">
         <div className="text-white max-w-xl relative animate-fade-in">
