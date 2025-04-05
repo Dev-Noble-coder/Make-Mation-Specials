@@ -1,12 +1,51 @@
-import React from 'react';
-import { Bell, Search, ChevronDown } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { Bell, Search, ChevronDown } from "lucide-react";
+import axios from "axios";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
-const Header = ({location}) => {
+const Header = ({ location }) => {
+  const API_BASE_URL = import.meta.env.VITE_ERP_TURBO_API_BASE_URL;
+  const [shouldNavigate, setShouldNavigate] = useState(false);
+
+  const navigate = useNavigate();
+
+  const logoutUser = async () => {
+    toast.success("Logging User Out");
+    try {
+      const response = await axios.post(
+        `${API_BASE_URL}api/auth/logout`,
+        {},
+        {
+          withCredentials: true, // Required to send cookies (access_token)
+        }
+      );
+
+      console.log("User logged out:");
+      setShouldNavigate(true);
+      localStorage.removeItem("loginStatus");
+      localStorage.removeItem("userName");
+      toast.success("User Logged Out");
+    } catch (error) {
+      console.error("Logout error:", error.response?.data || error.message);
+    }
+  };
+
+  useEffect(() => {
+    if (shouldNavigate) {
+      const timeout = setTimeout(() => {
+        navigate("/");
+      }, 2000);
+
+      return () => clearTimeout(timeout); // Cleanup timeout
+    }
+  }, [shouldNavigate, navigate]); // Runs when `shouldNavigate` changes
+
   return (
     <header className=" h-16 px-5 flex items-center justify-between shadow-sm">
-    <div className='flex-1 text-sm '>
+      <div className="flex-1 text-sm ">
         <h2>{location}Dashboard</h2>
-    </div>
+      </div>
       {/* <div className="flex-2 flex items-center">
         <div className="relative max-w-md w-full">
           <input
@@ -34,7 +73,14 @@ const Header = ({location}) => {
             className="w-8 h-8 rounded-full object-cover"
           />
           {/* <ChevronDown size={16} className="text-gray-600" /> */}
-          <p className='text-red-600'>LogOut</p>
+          <p
+            className="text-red-600 cursor-pointer"
+            onClick={() => {
+              logoutUser();
+            }}
+          >
+            LogOut
+          </p>
         </div>
       </div>
     </header>

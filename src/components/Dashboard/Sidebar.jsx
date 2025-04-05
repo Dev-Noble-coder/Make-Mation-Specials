@@ -82,16 +82,7 @@ function Sidebar() {
               />
             </div>
 
-            {/* Push Logout to Bottom */}
-            <div className="mt-auto ">
-              <MenuItem
-                icon={Users}
-                name="LogOut"
-                active={location.pathname === "/logout_dashboard"}
-                to="/logout_dashboard"
-                onClick={setActiveItem}
-              />
-            </div>
+       
           </nav>
         </div>
       </div>

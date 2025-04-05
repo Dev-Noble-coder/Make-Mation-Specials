@@ -10,12 +10,13 @@ export const authUser = async (request, endpoint, data) => {
             method: request, // Use the request type (e.g., "POST", "GET", "PUT")
             url: `${API_BASE_URL}${endpoint}`,
             data: request === "GET" ? null : data, // GET requests usually don't send a body
+            withCredentials: true, 
             headers: {
-
                 "Content-Type": "application/json",
             },
             
         });
+        
 
         return { success: true, data: response.data }; // Return success response
     } catch (error) {

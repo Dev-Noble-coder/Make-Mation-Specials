@@ -9,7 +9,6 @@ import Create_New_Password from "./auth/Create_New_Password";
 import Home_Dashboard from "./pages/HomeDashboard/home_dashboard";
 import Leaderboard_Dashboard from "./pages/LeaderboardDashboard/leaderboard_dashboard";
 import Learning_Dashboard from "./pages/LearningDashboard/learning_dashboard";
-import Logout_Dashboard from "./pages/LogoutDashboard/logout_dashboard";
 import Profile_Dashboard from "./pages/Profile Dashboard/profile_dashboard";
 import Test_Dashboard from "./pages/TestDashboard/test_dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -70,15 +69,6 @@ function App() {
             element={
               <ProtectedRoute>
                 <Profile_Dashboard />{" "}
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/logout_dashboard"
-            element={
-              <ProtectedRoute>
-                {" "}
-                <Logout_Dashboard />{" "}
               </ProtectedRoute>
             }
           />
