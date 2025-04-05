@@ -11,8 +11,10 @@ export const authUser = async (request, endpoint, data) => {
             url: `${API_BASE_URL}${endpoint}`,
             data: request === "GET" ? null : data, // GET requests usually don't send a body
             headers: {
+
                 "Content-Type": "application/json",
             },
+            
         });
 
         return { success: true, data: response.data }; // Return success response

@@ -12,24 +12,76 @@ import Learning_Dashboard from "./pages/LearningDashboard/learning_dashboard";
 import Logout_Dashboard from "./pages/LogoutDashboard/logout_dashboard";
 import Profile_Dashboard from "./pages/Profile Dashboard/profile_dashboard";
 import Test_Dashboard from "./pages/TestDashboard/test_dashboard";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
     <>
-       <Toaster position="top-center" reverseOrder={false} />
+      <Toaster position="top-center" reverseOrder={false} />
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/create_account" element={<Create_Account />} />
           <Route path="/forgot_password" element={<Forgot_Passsword />} />
-          <Route path="/email_otp_verification" element={<OTP_Verification />} />
-          <Route path="/create_new_password" element={<Create_New_Password />} />
-          <Route path="/home_dashboard" element={<Home_Dashboard/>} />
-          <Route path="/learning_dashboard" element={<Learning_Dashboard/>} />
-          <Route path="/leaderboard_dashboard" element={<Leaderboard_Dashboard />} />
-          <Route path="/test_dashboard" element={<Test_Dashboard />} />
-          <Route path="/profile_dashboard" element={<Profile_Dashboard />} />
-          <Route path="/logout_dashboard" element={<Logout_Dashboard/>} />
+          <Route
+            path="/email_otp_verification"
+            element={<OTP_Verification />}
+          />
+          <Route
+            path="/create_new_password"
+            element={<Create_New_Password />}
+          />
+          <Route
+            path="/home_dashboard"
+            element={
+              <ProtectedRoute>
+                <Home_Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/learning_dashboard"
+            element={
+              <ProtectedRoute>
+                {" "}
+                <Learning_Dashboard />{" "}
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/leaderboard_dashboard"
+            element={
+              <ProtectedRoute>
+                <Leaderboard_Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/test_dashboard"
+            element={
+              <ProtectedRoute>
+                {" "}
+                <Test_Dashboard />{" "}
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/profile_dashboard"
+            element={
+              <ProtectedRoute>
+                <Profile_Dashboard />{" "}
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/logout_dashboard"
+            element={
+              <ProtectedRoute>
+                {" "}
+                <Logout_Dashboard />{" "}
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </Router>
     </>

@@ -1,10 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Lightbulb, X } from "lucide-react";
 import toast, { Toaster } from "react-hot-toast";
 import { motion } from "framer-motion";
-import makemationImg from '../../assets/img/make-mationImg.png'
+import makemationImg from "../../assets/img/make-mationImg.png";
 
 const Welcome_Section = () => {
+  const [name, setName] = useState("...");
+  useEffect(() => {
+    setName((localStorage.getItem("userName") || "").split(" ")[1] );
+  }, []);
+
+ 
+
   const codingMotivations = [
     "Code is like humor. When you have to explain it, it’s bad.",
     "Programming isn't about what you know; it's about what you can figure out.",
@@ -34,7 +41,6 @@ const Welcome_Section = () => {
       style={{
         backgroundImage: `url(${makemationImg})`,
       }}
-      
     >
       {/* Overlay */}
       <div className="absolute inset-0 bg-black opacity-80 rounded-xl"></div>
@@ -44,7 +50,7 @@ const Welcome_Section = () => {
         <div>
           <div className="flex justify-between items-center">
             <h1 className="text-4xl lg:text-6xl bg-gradient-to-r from-[#CD950E] to-gray-100 bg-clip-text text-transparent">
-              Hello Daniel !
+              Hello {name} !
             </h1>
 
             <div className="cursor-pointer" onClick={showMotivation}>

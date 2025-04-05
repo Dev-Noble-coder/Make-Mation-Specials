@@ -9,22 +9,30 @@ import {
   ArrowLeftIcon,
   Calendar,
   Hash,
-  FileText, 
+  FileText,
 } from "lucide-react";
-import { Link } from "react-router-dom";
-import makemationLogo from '../../assets/img/makemationLogo.png'
+import { toast } from "react-hot-toast";
+import { Link , useLocation, useNavigate  } from "react-router-dom";
+import makemationLogo from "../../assets/img/makemationLogo.png";
+import { authUser } from "../../apis/api_auth_user";
 
 const RightSide = () => {
   const [step, setStep] = useState(1);
   const [showPassword, setShowPassword] = useState(false);
+  const [shouldNavigate, setShouldNavigate] = useState(false);
+  const[loading, setLoading] = useState(false)
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    name: "",
+    full_name: "",
     age: "",
     dob: "",
-    text: "",
+    reason: "",
   });
+
+
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -33,23 +41,56 @@ const RightSide = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (step === 1) {
       setStep(2);
     } else {
-      // Handle final submission
-      console.log("Form submitted:", formData);
-      setFormData({
-        email: "",
-        password: "",
-        name: "",
-        age: "",
-        dob: "",
-        text: "",
-      })
-    }
+      try {
+        setLoading(true)
+        console.log(formData)
+        const result = await authUser(
+          "POST",
+          "api/auth/register",
+          formData
+        );
+
+        if (result.success) {
+          toast.success('User successfully created');
+          setShouldNavigate(true);
+       
+        } else {
+          toast.error(result.message); // Handle error message
+        }
+      } catch (err) {
+        toast.error("An unexpected error occurred. Please try again.");
+      } finally {
+        setLoading(false)
+        setFormData({
+          email: "",
+          password: "",
+          name: "",
+          age: "",
+          dob: "",
+          text: "",
+        });
+      }
+      }
+
+  
   };
+
+    useEffect(() => {
+    if (shouldNavigate) {
+      const timeout = setTimeout(() => {
+        navigate("/");
+      }, 3000);
+
+      return () => clearTimeout(timeout); // Cleanup timeout
+    }
+  }, [shouldNavigate, navigate]); // Runs when `shouldNavigate` changes
 
   return (
     <div className="flex-1 flex items-center justify-center p-8 relative">
@@ -77,7 +118,7 @@ const RightSide = () => {
         <form onSubmit={handleSubmit} className="">
           {step === 1 ? (
             <>
-                <div className="mb-3">
+              <div className="mb-3">
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Full Name
                 </label>
@@ -85,8 +126,8 @@ const RightSide = () => {
                   <User className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5" />
                   <input
                     type="text"
-                    name="name"
-                    value={formData.name}
+                    name="full_name"
+                    value={formData.full_name}
                     onChange={handleChange}
                     required
                     className="pl-10 w-full px-4 py-3 rounded-lg border border-gray-300 text-sm focus:outline-0  focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -143,8 +184,6 @@ const RightSide = () => {
             </>
           ) : (
             <>
-          
-
               {/* Age Input */}
               <div className="mb-3">
                 <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -187,11 +226,10 @@ const RightSide = () => {
                   Why you think this is a great opportunity ?
                 </label>
                 <div className="relative">
-                 
                   <input
                     type="text"
-                    name="text"
-                    value={formData.text}
+                    name="reason"
+                    value={formData.reason}
                     onChange={handleChange}
                     required
                     className="pl-5 w-full px-4 py-3 rounded-lg border border-gray-300 text-sm focus:outline-0  focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -199,8 +237,6 @@ const RightSide = () => {
                   />
                 </div>
               </div>
-
-            
             </>
           )}
 
@@ -209,8 +245,9 @@ const RightSide = () => {
             className="w-full bg-blue-600 text-white py-3 px-4 mt-8 text-sm rounded-lg hover:bg-blue-700  transition-colors flex items-center justify-center gap-2 cursor-pointer"
           >
             {step === 1 ? "Continue" : "Create Account"}
-            {step === 1 ?   <ChevronRight className="h-5 w-5" /> : ""}
-          
+            {step === 1 ? <ChevronRight className="h-5 w-5" /> : ""}
+            {loading ? <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div> :''
+            }
           </button>
         </form>
 

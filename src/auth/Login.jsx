@@ -11,16 +11,23 @@ import {
   Hash,
   FileText,
 } from "lucide-react";
-import { Link } from "react-router-dom";
-import makemationLogo from '../assets/img/makemationLogo.png'
+import { toast } from "react-hot-toast";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import makemationLogo from "../assets/img/makemationLogo.png";
 import LeftSide from "../components/AuthComp/LeftSide";
+import { authUser } from "../apis/api_auth_user";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [shouldNavigate, setShouldNavigate] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+
+    const location = useLocation();
+    const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -29,15 +36,43 @@ const Login = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log("Form submitted:", formData);
-    setFormData({
-      email: "",
-      password: "",
-    });
+    try {
+      setLoading(true);
+      console.log(formData);
+      const result = await authUser("POST", "api/auth/login", formData);
+
+      if (result.success) {
+        toast.success("User loggedin successfully");
+        setShouldNavigate(true);
+        console.log(result.data)
+        localStorage.setItem('loginStatus' , true)
+        localStorage.setItem('userName' , result.data.data.user.name)
+      } else {
+        toast.error(result.message); // Handle error message
+      }
+    } catch (err) {
+      toast.error("An unexpected error occurred. Please try again.");
+    } finally {
+      setLoading(false);
+      setFormData({
+        email: "",
+        password: "",
+      });
+    }
   };
+
+  useEffect(() => {
+    if (shouldNavigate) {
+      const timeout = setTimeout(() => {
+        navigate("/home_dashboard");
+      }, 3000);
+
+      return () => clearTimeout(timeout); // Cleanup timeout
+    }
+  }, [shouldNavigate, navigate]); // Runs when `shouldNavigate` changes
 
   return (
     <div className="hidden md:flex min-h-screen bg-gray-50 ">
@@ -102,8 +137,8 @@ const Login = () => {
               </div>
             </div>
 
-              {/* Remember Me & Forgot Password */}
-              <div className="flex justify-between items-center text-sm  mt-4">
+            {/* Remember Me & Forgot Password */}
+            <div className="flex justify-between items-center text-sm  mt-4">
               <label className="flex items-center space-x-2">
                 <input type="checkbox" className="w-4 h-4" />
                 <span>Remember me</span>
@@ -120,6 +155,8 @@ const Login = () => {
               className="w-full bg-blue-600 text-white py-3 px-4 mt-8 text-sm rounded-lg hover:bg-blue-700  transition-colors flex items-center justify-center gap-2 cursor-pointer"
             >
               Login
+              {loading ? <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div> :''
+            }
             </button>
           </form>
 
@@ -129,7 +166,7 @@ const Login = () => {
               to="/create_account"
               className="text-blue-600 hover:text-blue-700 font-medium text-sm"
             >
-              Sign up
+              Sign up 
             </Link>
           </p>
         </div>
