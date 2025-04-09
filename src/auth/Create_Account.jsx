@@ -4,7 +4,7 @@ import RightSide from "../components/AuthComp/RightSide";
 
 function Create_Account() {
   return (
-    <div className="flex min-h-screen bg-gray-50 ">
+    <div className="flex h-svh md:min-h-screen bg-gray-50 ">
       <LeftSide />
 
       {/* Right side - Form */}
