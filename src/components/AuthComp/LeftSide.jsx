@@ -49,15 +49,15 @@ const LeftSide = () => {
       />
       <div className="absolute inset-0 bg-gradient-to-r from-purple-900/90 to-indigo-900/90" />
       <SparkleEffect />
-      <div className="absolute inset-0 flex items-center justify-center p-12">
+      <div className="absolute inset-0 flex items-center justify-center p-5 md:p-12">
         <div className="text-white max-w-xl relative animate-fade-in">
           <div className="flex items-center gap-3 mb-4">
             <Film className="w-8 h-8 animate-pulse text-yellow-300" />
-            <h3 className="text-xl font-semibold text-yellow-300">
+            <h3 className=" text-md md:text-xl font-semibold text-yellow-300">
               MakeMation Launch Specials
             </h3>
           </div>
-          <h2 className="text-4xl font-bold mb-6 animate-slide-up">
+          <h2 className="text-xl md:text-4xl font-bold mb-6 animate-slide-up">
             Be Part of the Onboarding
           </h2>
           <p className="text-md mb-6 text-gray-200 animate-slide-up delay-100">
