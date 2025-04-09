@@ -84,7 +84,7 @@ const Login = () => {
   }, [shouldNavigate, navigate]); // Runs when `shouldNavigate` changes
 
   return (
-    <div className="flex min-h-screen bg-gray-50 ">
+    <div className="flex h-svh md:min-h-screen bg-gray-50 ">
       <LeftSide />
       {isMobile ? (
         <motion.div
