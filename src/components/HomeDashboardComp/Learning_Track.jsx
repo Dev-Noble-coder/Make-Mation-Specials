@@ -10,8 +10,8 @@ function Learning_Track() {
     },
     {
       percentage: 20,
-      color: "text-amber-400",
-      bg: "bg-amber-400",
+      color: "text-[#ffcc00]",
+      bg: "bg-[#ffcc00]",
       label: "CSS",
     },
     {

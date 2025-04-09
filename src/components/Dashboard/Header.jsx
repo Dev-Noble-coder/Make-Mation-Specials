@@ -44,7 +44,7 @@ const Header = ({ location }) => {
   return (
     <header className=" h-16 px-5 flex items-center justify-between shadow-sm">
       <div className="flex-1 text-sm ">
-        <h2>{location}Dashboard</h2>
+        <h2 className="text-[#222]">{location}Dashboard</h2>
       </div>
       {/* <div className="flex-2 flex items-center">
         <div className="relative max-w-md w-full">

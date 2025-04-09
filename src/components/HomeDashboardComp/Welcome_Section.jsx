@@ -49,12 +49,12 @@ const Welcome_Section = () => {
       <div className="relative p-6 text-white ">
         <div>
           <div className="flex justify-between items-center">
-            <h1 className="text-4xl lg:text-6xl bg-gradient-to-r from-[#CD950E] to-gray-100 bg-clip-text text-transparent">
+            <h1 className="text-4xl lg:text-6xl bg-gradient-to-r from-[#ffcc00] to-gray-100 bg-clip-text text-transparent">
               Hello {name} !
             </h1>
 
             <div className="cursor-pointer" onClick={showMotivation}>
-              <Lightbulb size={30} className="text-[#CD950E]" />
+              <Lightbulb size={30} className="text-[#ffcc00]" />
             </div>
           </div>
 

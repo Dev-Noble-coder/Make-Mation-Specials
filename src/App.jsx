@@ -7,6 +7,8 @@ import Forgot_Passsword from "./auth/Forgot_Passsword";
 import OTP_Verification from "./auth/OTP_Verification";
 import Create_New_Password from "./auth/Create_New_Password";
 import Home_Dashboard from "./pages/HomeDashboard/home_dashboard";
+import Message_Dashboard from "./pages/MessageDashboard/message_dashboard";
+import Competitions_Dashboard from "./pages/CompetitionsDashboard/competitions_dashboard";
 import Leaderboard_Dashboard from "./pages/LeaderboardDashboard/leaderboard_dashboard";
 import Learning_Dashboard from "./pages/LearningDashboard/learning_dashboard";
 import Profile_Dashboard from "./pages/Profile Dashboard/profile_dashboard";
@@ -44,6 +46,24 @@ function App() {
               <ProtectedRoute>
                 {" "}
                 <Learning_Dashboard />{" "}
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/message_dashboard"
+            element={
+              <ProtectedRoute>
+                {" "}
+                <Message_Dashboard />{" "}
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/competitions_dashboard"
+            element={
+              <ProtectedRoute>
+                {" "}
+                <Competitions_Dashboard />{" "}
               </ProtectedRoute>
             }
           />
