@@ -86,6 +86,8 @@ const Forgot_Passsword = () => {
         </div>
       </div>
     </div>
+
+    
   );
 };
 
