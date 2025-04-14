@@ -23,6 +23,14 @@ const Forgot_Passsword = () => {
     email: "",
   });
 
+    useEffect(() => {
+      const checkMobile = () => setIsMobile(window.innerWidth < 768);
+      checkMobile();
+      window.addEventListener("resize", checkMobile);
+      return () => window.removeEventListener("resize", checkMobile);
+    }, []);
+  
+
   const handleChange = (e) => {
     setFormData((prev) => ({
       ...prev,
