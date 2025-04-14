@@ -37,19 +37,19 @@ const Welcome_Section = () => {
 
   return (
     <div
-      className="my-10 mx-5 relative  bg-cover bg-top  rounded-xl h-[170px]"
+      className="my-10 mx-5 relative  bg-cover bg-top  rounded-xl md:h-[170px] -z-10"
       style={{
         backgroundImage: `url(${makemationImg})`,
       }}
     >
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black opacity-80 rounded-xl"></div>
+      <div className="absolute  inset-0 bg-black opacity-80 rounded-xl"></div>
 
       {/* Content */}
-      <div className="relative p-6 text-white ">
+      <div className="relative py-10 px-6 md:p-6 text-white  ">
         <div>
           <div className="flex justify-between items-center">
-            <h1 className="text-4xl lg:text-6xl bg-gradient-to-r from-[#ffcc00] to-gray-100 bg-clip-text text-transparent">
+            <h1 className=" text-xl md:text-4xl lg:text-6xl bg-gradient-to-r from-[#ffcc00] to-gray-100 bg-clip-text text-transparent">
               Hello {name} !
             </h1>
 
@@ -58,7 +58,7 @@ const Welcome_Section = () => {
             </div>
           </div>
 
-          <p className="text-md py-3 pl-1">
+          <p className="text-sm md:text-md py-3 pl-1">
             Ready to learn and explore today ?
           </p>
         </div>
@@ -70,11 +70,11 @@ const Welcome_Section = () => {
           animate={{ x: 0, opacity: 1 }}
           exit={{ x: 100, opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="fixed top-13 right-5 bg-blue-500/50 px-6 py-3 rounded-sm shadow-lg flex items-center gap-3"
+          className="fixed top-[10%] md:top-13 text-sm right-2 md:right-5 bg-blue-500/50 px-6 py-3 rounded-sm shadow-lg flex items-center gap-3"
         >
           <p>{motivation}</p>
           <button onClick={() => setShowNotification(false)}>
-            <X size={20} className="cursor-pointer" />
+            <X size={20} className="cursor-pointer text-white" />
           </button>
         </motion.div>
       )}

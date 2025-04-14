@@ -1,21 +1,28 @@
 import React, { useState } from "react";
-import { Home, Users, MessageSquare, FileText, CodeXml, Trophy, Gamepad } from "lucide-react";
+import {
+  Home,
+  Users,
+  MessageSquare,
+  FileText,
+  CodeXml,
+  Trophy,
+  Gamepad
+} from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import makemationLogo from '../../assets/img/makemationLogo.png'
+import makemationLogo from "../../../assets/img/makemationLogo.png";
 import { toast } from "react-hot-toast";
 
-
-function Sidebar() {
+function MobileSidebar() {
   const location = useLocation();
   const [activeItem, setActiveItem] = useState("Dashboard");
 
   return (
-    <div className="hidden md:flex min-h-screen bg-gray-100">
+    <div className=" flex  min-h-screen bg-gray-100 ">
       {/* Sidebar */}
-      <div className="w-64 bg-[#1a1a1a] text-gray-300 flex flex-col">
+      <div className="w-64 bg-[#1a1a1a] text-gray-300 flex flex-col ">
         {/* Logo */}
         <div className="py-5 pl-8">
-         <img src={makemationLogo} alt="" />
+          <img src={makemationLogo} alt="" />
         </div>
 
         <hr className="mx-5 opacity-15" />
@@ -40,7 +47,7 @@ function Sidebar() {
                 name="Message"
                 active={location.pathname === "/message_dashboard"}
                 // to="/message_dashboard"
-                onClick={() => toast.success('Feature Coming Soon!')}
+                onClick={() => toast.success("Feature Coming Soon!")}
               />
               <MenuItem
                 icon={Users}
@@ -77,7 +84,7 @@ function Sidebar() {
                 name="Game"
                 active={location.pathname === "/game_dashboard"}
                 // to="/game_dashboard"
-                onClick={() => toast.success('Feature Coming Soon!')}
+                onClick={() => toast.success("Feature Coming Soon!")}
               />
               <MenuItem
                 icon={Trophy}
@@ -103,8 +110,6 @@ function Sidebar() {
                 onClick={setActiveItem}
               />
             </div>
-
-       
           </nav>
         </div>
       </div>
@@ -125,11 +130,10 @@ function MenuItem({ icon: Icon, name, to, active, onClick }) {
             : "text-gray-400 hover:bg-gray-800 hover:text-gray-200"
         }`}
     >
-      <Icon className={`h-5 w-5 mr-3 ${active ? 'text-[#ffcc00]' : ''
-      }`} />
+      <Icon className={`h-5 w-5 mr-3 ${active ? "text-[#ffcc00]" : ""}`} />
       <span>{name}</span>
     </Link>
   );
 }
 
-export default Sidebar;
+export default MobileSidebar;

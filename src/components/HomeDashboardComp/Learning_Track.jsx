@@ -23,18 +23,18 @@ function Learning_Track() {
   ];
 
   return (
-    <div className=" my-10">
+    <div className=" my-10 ">
       <div className="bg-white px-5 py-10 rounded-md shadow-sm">
         <h2 className="text-sm font-bold mb-5 ">Learning Tracks</h2>
-        <div className="flex items-center space-x-4 pb-5">
+        <div className="flex justify-center md:justify-start items-center space-x-4 pb-5 ">
           {tracks.map((skill, index) => (
-            <div key={index} className="flex items-center space-x-2">
+            <div key={index} className="flex  items-center space-x-2">
               <span className="text-gray-500 text-sm">{skill.label}</span>
               <span className={`w-2 h-2 rounded-full ${skill.bg}`}></span>
             </div>
           ))}
         </div>
-        <div className="flex flex-col justify-evenly md:flex-row gap-12">
+        <div className="grid grid-cols-2 md:flex  md:justify-evenly md:flex-row gap-12 ">
           {tracks.map((track, index) => (
             <ProgressCircle key={index} {...track} />
           ))}
@@ -57,8 +57,8 @@ function ProgressCircle({ percentage, color, label }) {
 
   return (
     <div className="flex flex-col  items-center">
-      <div className="relative w-24 h-24">
-        <svg className="w-full h-full -rotate-90">
+      <div className="relative w-24 h-24 z-10 ">
+        <svg className="w-full h-full -rotat90">
           <circle
             cx="48"
             cy="48"

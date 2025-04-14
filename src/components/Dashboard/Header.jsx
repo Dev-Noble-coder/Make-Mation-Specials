@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Bell, Search, ChevronDown } from "lucide-react";
+import { Bell, Search, ChevronDown, Menu } from "lucide-react";
 import axios from "axios";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import MobileSidebar from "./MobileSidebar/MobileSidebar";
 
 const Header = ({ location }) => {
+  const [isToggled, setisToggled] = useState(false);
+
   const API_BASE_URL = import.meta.env.VITE_ERP_TURBO_API_BASE_URL;
   const [shouldNavigate, setShouldNavigate] = useState(false);
 
@@ -42,25 +45,22 @@ const Header = ({ location }) => {
   }, [shouldNavigate, navigate]); // Runs when `shouldNavigate` changes
 
   return (
-    <header className=" h-16 px-5 flex items-center justify-between shadow-sm">
-      <div className="flex-1 text-sm ">
+    <>
+    
+
+    <header className=" h-16 px-5 flex items-center justify-between shadow-sm ">
+    
+      <div className="flex-1 text-sm flex gap-2 justify-start items-center">
+      <div className="sm:hidden ">
+        <Menu size={20} className="text-gray-600" onClick={() => setisToggled(true)} />
+      </div>
         <h2 className="text-[#222]">{location}Dashboard</h2>
       </div>
-      {/* <div className="flex-2 flex items-center">
-        <div className="relative max-w-md w-full">
-          <input
-            type="text"
-            placeholder="Search here"
-            className="w-full h-10 pl-10 pr-4 text-sm text-gray-700 bg-gray-50 rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-gray-200"
-          />
-          <Search 
-            className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" 
-            size={18} 
-          />
-        </div>
-      </div> */}
+      <div className="fixed left-0 top-0 z-50">
+      {isToggled ? <MobileSidebar/> : ''} 
+      </div>
 
-      <div className="flex items-center space-x-6">
+      <div className="flex items-center space-x-6 ">
         <button className="relative p-2">
           <Bell size={20} className="text-gray-600" />
           <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"></span>
@@ -84,6 +84,7 @@ const Header = ({ location }) => {
         </div>
       </div>
     </header>
+    </>
   );
 };
 
